@@ -7,6 +7,9 @@ const app = express();
 
 
 const PORT = process.env.PORT || 3000
+
+//middleware
+app.use(express.static('./public'))
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));

@@ -70,37 +70,38 @@
         <!-- start of borrow -->
         <section class="Borrow">
         <form class="form-borrow">
-            <label for="name" class="form-label">Name
-                <input type="text" name="name" id="name" class="form-input">
+            <label for="studentName" class="form-label">Name
+
             </label>
+            <input type="text" name="studentName" id="StudentName" class="form-input student-name-input">
             
             <label for="Admission" class="form-label">Admission Number
-                <input type="text" name="admission" id="Admission" class="form-input">
+                <input type="text" name="admission" id="Admission" class="form-input student-adm-no">
             </label>
            
             <label for="course" class="form-label">Course
-                <input type="text" name="course" id="course" class="form-input">
+                <input type="text" name="course" id="course" class="form-input course">
             </label>
             
             <label for="category" class="form-label">Category
-            <select id="category" class="form-input">
+            <select id="category" class="form-input category-select">
                 <option value="--">--</option>
-                <option value="">IT and Computing</option>
-                <option value="">Business and Economics</option>
-                <option value="">Media and Journalism</option>
+                <option value="IT and Computing">IT and Computing</option>
+                <option value="Business and Economics">Business and Economics</option>
+                <option value="Media and Journalism">Media and Journalism</option>
                 
             </select>
         </label>
     
             <label for="book-name" class="form-label">Book Name
-                <input type="text" name="name" id="book-name" class="form-input">
+                <input type="text" name="name" id="book-name" class="form-input book-name">
             </label>
         
             <label for="bookID" class="form-label">Book ID
-                <input type="text" name="name" id="bookID" class="form-input">
+                <input type="text" name="name" id="bookID" class="form-input book-id">
             </label>
             
-           
+            <button type="submit" class="btn submit-btn">submit</button>
         </form>
     </section>
           <!-- end of borrow -->
@@ -163,17 +164,13 @@
           <!-- Start of Books -->
           <section class="Books">
             <table>
-                <tr>
-                    <th>book Id</th>
-                    <th>Name</th>
-                    <th>category</th>
-                    
-                </tr>
-                <tr>
-                        <td>001</td>
-                        <td>mombasa</td>
-                        <td>county</td>
-                </tr>
+              <tr>
+                <th>Book Id</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Author</th>
+                  <th>Copies</th>
+                </tr>   
                 
             </table>
           </section>
@@ -215,7 +212,13 @@
           <!-- end of Default -->
       </div> 
     </main>
-
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+    integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
     <script src="./index.js"></script>
+    <script src="./form.js"></script>
   </body>
 </html>
