@@ -14,15 +14,6 @@ const tableDOM = document.querySelector('table')
 
 
 
-
-
-
-
-
-
-
-
-
 const displaySection = (el) => {
   allSections.forEach((item) => {
     item.style.display = "none";
@@ -161,33 +152,3 @@ showAllBooks()
 
 
 
-
-
-const borrowForm = document.querySelector('.form-borrow')
-const studentNameInput = document.querySelector('.student-name-input')
-const StudentAdmNoInput = document.querySelector('.student-adm-no')
-const course = document.querySelector('#course')
-const categorySelect = document.querySelector('.category-select')
-const bookName = document.querySelector('.book-name')
-const boookId = document.querySelector('.book-id')
-
-
-borrowForm.addEventListener('submit', (e)=>{
-    e.preventDefault()
-     const studentName = studentNameInput.value
-    const studentAdmNo = StudentAdmNoInput.value
-    const courseId = course.value
-    const categoryId = categorySelect.value
-    const book_Name = bookName.value
-    const book_Id = boookId.value
-
-    const myValue={
-        studentName,
-        studentAdmNo,
-        courseId,
-        categoryId,
-        book_Name,
-        book_Id
-    }
-    console.log(myValue) 
-})
