@@ -5,9 +5,8 @@ const Student = require('../models/Student')
 
 const getBorrowedBooks = async(req, res)=>{
     try {
-        const borrowedBooks = await Borrow.find({}).where('defaulted').equals(false)
+        const borrowedBooks = await Borrow.find({}).sort('-borrowDate')
         res.json(borrowedBooks)
-        console.log(borrowedBooks)
     } catch (error) {
         console.log(error)
         res.status(500).json(error)

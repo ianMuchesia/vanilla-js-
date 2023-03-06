@@ -36,8 +36,18 @@ const borrowSchema = new Schema({
           return false
         }
         //If the returnDate is less than or equal to (i.e. the book was not returned within 15 days), then the condition is false, and the defaulted property is set to true.
-      }
-})
+      },
+      damaged:{
+        type:Boolean,
+        default:false,
+      },
+      damagedReason:{
+        type:String,
+        default:null,
+      },
+},
+{timestamps:true}
+)
 
 borrowSchema.pre('save', async function() {
     const book = await Book.findById(this.book);

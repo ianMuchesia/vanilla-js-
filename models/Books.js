@@ -3,6 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
+    bookID:{
+        type:String,
+        required: [true, 'bookID must be included'],
+        unique: true
+    },
     title: {
         type: String,
         required: [true , 'title of the book must be included'],
@@ -24,9 +29,9 @@ const bookSchema = new Schema({
        
         default: 2,
     },
-  
+ 
 
-}
+}, 
 
 )
 //returns true if copies is greater than zero

@@ -1,168 +1,196 @@
 [
     {
+     "bookID":"BK1",
       "title": "Code Complete: A Practical Handbook of Software Construction",
       "author": "Steve McConnell",
       "category": "IT and Computing",
       "description": "A comprehensive guide to software construction, this book covers everything from design and coding to testing and maintenance."
     },
     {
+     "bookID":"BK2",
       "title": "The Pragmatic Programmer: From Journeyman to Master",
       "author": "Andrew Hunt and David Thomas",
       "category": "IT and Computing",
       "description": "This book offers practical advice on how to improve your coding skills, develop good habits, and deliver high-quality software."
     },
     {
+     "bookID":"BK3",
       "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
       "author": "Robert C. Martin",
       "category": "IT and Computing",
       "description": "This book provides practical advice on how to write clean, maintainable code that is easy to read and understand."
     },
     {
+     "bookID":"BK4",
       "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
       "author": "Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides",
       "category": "IT and Computing",
       "description": "This book is a classic in software engineering, and provides a comprehensive overview of design patterns that can be used to solve common problems in software development."
     },
     {
+     "bookID":"BK5",
       "title": "Code: The Hidden Language of Computer Hardware and Software",
       "author": "Charles Petzold",
       "category": "IT and Computing",
       "description": "This book explores the inner workings of computers, from the basic principles of digital logic to the design of the modern computer."
     },
     {
+     "bookID":"BK6",
       "title": "Artificial Intelligence: A Modern Approach",
       "author": "Stuart Russell and Peter Norvig",
       "category": "IT and Computing",
       "description": "This book provides a comprehensive introduction to the field of artificial intelligence, covering topics such as search, logic, knowledge representation, and machine learning."
     },
     {
+     "bookID":"BK7",
       "title": "The Mythical Man-Month: Essays on Software Engineering",
       "author": "Frederick P. Brooks Jr.",
       "category": "IT and Computing",
       "description": "This book explores the challenges of managing large software projects, and provides insights into how to improve productivity and quality in software development."
     },
     {
+     "bookID":"BK8",
       "title": "Structure and Interpretation of Computer Programs",
       "author": "Harold Abelson and Gerald Jay Sussman",
       "category": "IT and Computing",
       "description": "This book is a classic in computer science education, and provides an introduction to programming and computer science through the Scheme programming language."
     },
     {
+     "bookID":"BK9",
       "title": "Don't Make Me Think: A Common Sense Approach to Web Usability",
       "author": "Steve Krug",
       "category": "IT and Computing",
       "description": "This book is a practical guide to web usability, and provides advice on how to design websites that are easy to use and navigate."
     },
     {
+     "bookID":"BK10",
       "title": "The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win",
       "author": "Gene Kim, Kevin Behr, and George Spafford",
       "category": "IT and Computing",
       "description": "This book is a novel that explores the challenges of IT operations and DevOps, and provides practical advice on how to improve IT performance and reliability."
     },
     {
-        "title": "Thinking, Fast and Slow",
+      "bookID":"BK11", 
+      "title": "Thinking, Fast and Slow",
         "author": "Daniel Kahneman",
         "category": "Business and Economics",
         "description": "This book explores the cognitive biases and heuristics that affect our decision-making processes, and provides insights into how to make better decisions."
       },
       {
+       "bookID":"BK12",
         "title": "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses",
         "author": "Eric Ries",
         "category": "Business and Economics",
         "description": "This book provides practical advice on how to create and grow a successful startup, using a lean and agile approach to product development and customer feedback."
       },
       {
+       "bookID":"BK13",
         "title": "Capital in the Twenty-First Century",
         "author": "Thomas Piketty",
         "category": "Business and Economics",
         "description": "This book provides a comprehensive analysis of income inequality and wealth distribution over the past two centuries, and proposes policy solutions for reducing inequality."
       },
       {
+       "bookID":"BK14",
         "title": "Good to Great: Why Some Companies Make the Leap and Others Don't",
         "author": "Jim Collins",
         "category": "Business and Economics",
         "description": "This book explores the characteristics of companies that have made the transition from good to great, and provides insights into how to create a successful organization."
       },
       {
+       "bookID":"BK15",
         "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail",
         "author": "Clayton M. Christensen",
         "category": "Business and Economics",
         "description": "This book explores the challenges that established companies face when disruptive technologies emerge, and provides strategies for adapting to change and staying competitive."
       },
       {
+       "bookID":"BK16",
         "title": "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything",
         "author": "Steven Levitt and Stephen Dubner",
         "category": "Business and Economics",
         "description": "This book applies economic principles to a wide range of topics, from cheating in sumo wrestling to the impact of abortion on crime rates."
       },
       {
+       "bookID":"BK17",
         "title": "The E-Myth Revisited: Why Most Small Businesses Don't Work and What to Do About It",
         "author": "Michael E. Gerber",
         "category": "Business and Economics",
         "description": "This book provides practical advice on how to start and grow a successful small business, focusing on the importance of systems and processes."
       },
       {
+       "bookID":"BK18",
         "title": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change",
         "author": "Stephen R. Covey",
         "category": "Business and Economics",
         "description": "This book provides a framework for personal and professional growth, focusing on seven key habits that can help individuals become more effective in their lives and careers."
       },
       {
+       "bookID":"BK19",
         "title": "Nudge: Improving Decisions About Health, Wealth, and Happiness",
         "author": "Richard H. Thaler and Cass R. Sunstein",
         "category": "Business and Economics",
         "description": "This book explores the principles of behavioral economics, and provides insights into how to design policies and systems that nudge people towards making better decisions."
       },
       {
+       "bookID":"BK20",
         "title": "The Intelligent Investor: The Definitive Book on Value Investing",
         "author": "Benjamin Graham",
         "category": "Business and Economics",
         "description": "This book is a classic in investment literature , and provides a comprehensive guide to value investing, including strategies for analyzing financial statements and identifying undervalued stocks."
     },
     {
-        "title": "All the President's Men",
+      "bookID":"BK21", 
+      "title": "All the President's Men",
         "author": "Bob Woodward, Carl Bernstein",
         "category": "Journalism and Media",
         "description": "This book chronicles the Pulitzer Prize-winning investigation of two Washington Post reporters that led to the resignation of President Richard Nixon. It's a thrilling account of the investigative journalism that helped to shape modern political reporting."
         },
         {
-        "title": "The Elements of Journalism: What Newspeople Should Know and the Public Should Expect",
+       "bookID":"BK22",
+          "title": "The Elements of Journalism: What Newspeople Should Know and the Public Should Expect",
         "author": "Bill Kovach, Tom Rosenstiel",
         "category": "Journalism and Media",
         "description": "The Elements of Journalism sets out the fundamental principles and practices of journalism. This book is a must-read for anyone interested in understanding the importance of journalism and its role in modern society."
         },
         {
-        "title": "Media Control: The Spectacular Achievements of Propaganda",
+       "bookID":"BK23",
+          "title": "Media Control: The Spectacular Achievements of Propaganda",
         "author": "Noam Chomsky",
         "category": "Journalism and Media",
         "description": "In Media Control, Noam Chomsky argues that the media in the United States serves as a tool for propaganda and social control. This book is a must-read for anyone interested in understanding the power of the media and its impact on our society."
         },
         {
-        "title": "The Medium is the Massage",
+       "bookID":"BK24",
+          "title": "The Medium is the Massage",
         "author": "Marshall McLuhan, Quentin Fiore",
         "category": "Journalism and Media",
         "description": "The Medium is the Massage is a groundbreaking work that explores the impact of media on our perception of the world. The book is a visual and poetic exploration of the way in which media shapes our experience of reality."
         },
         {
-        "title": "Amusing Ourselves to Death",
+       "bookID":"BK25",
+          "title": "Amusing Ourselves to Death",
         "author": "Neil Postman",
         "category": "Journalism and Media",
         "description": "Amusing Ourselves to Death is a classic critique of the role of television in American society. The book argues that the rise of television has led to a decline in critical thinking and an erosion of our ability to engage in meaningful discourse."
         },
         {
-        "title": "The Journalist and the Murderer",
+       "bookID":"BK26",
+          "title": "The Journalist and the Murderer",
         "author": "Janet Malcolm",
         "category": "Journalism and Media",
         "description": "The Journalist and the Murderer is a controversial and thought-provoking exploration of the relationship between journalists and their subjects. The book challenges our assumptions about the ethics of journalism and the nature of truth."
         },
         {
-        "title": "War Reporting for Cowards",
+       "bookID":"BK27",
+          "title": "War Reporting for Cowards",
         "author": "Chris Ayres",
         "category": "Journalism and Media",
         "description": "In War Reporting for Cowards, Chris Ayres provides a humorous and insightful look at the world of war reporting. The book is a must-read for anyone interested in the challenges and rewards of reporting from the front lines of conflict."
         },
         {
-        "title": "The Press Effect: Politicians, Journalists, and the Stories that Shape the Political World",
+       "bookID":"BK28",
+          "title": "The Press Effect: Politicians, Journalists, and the Stories that Shape the Political World",
         "author": "Kathleen Hall Jamieson, Paul Waldman",
         "category": "Journalism and Media",
         "description": "The Press Effect is a fascinating exploration of the relationship between the press and politics. The book examines how the media shapes our understanding of political events and the way in which politicians manipulate the media to achieve their goals."

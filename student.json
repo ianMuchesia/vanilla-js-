@@ -12,7 +12,68 @@
     {
       "name": "Cole Musili",
       "admissionNumber": "2022003",
-      "course": "History"
+      "course": "Computer Science"
+    },
+    {
+      "name": "Frank Mwasaru",
+      "admissionNumber": "2022004",
+      "course": "IT"
+    },
+    {
+      "name": "Salma Ali",
+      "admissionNumber": "2022005",
+      "course": "Hospitality"
+    },
+    {
+      "name": "Grace Mwende",
+      "admissionNumber": "2022006",
+      "course": "Business"
+    },
+    {
+      "name": "Grace Kimangi",
+      "admissionNumber": "2022007",
+      "course": "Hospitality"
+    },
+    {
+      "name": "Delight Mary",
+      "admissionNumber": "2022008",
+      "course": "IT"
+    },
+    {
+      "name": "Evans Mwirigi",
+      "admissionNumber": "2022009",
+      "course": "Media"
+    },
+    {
+      "name": "Magdalene Gathoni",
+      "admissionNumber": "2022010",
+      "course": "Mathematics"
+    },
+    {
+      "name": "Hulya Esha",
+      "admissionNumber": "2022011",
+      "course": "Hospitality"
+    },
+    {
+      "name": "Alfred Musau",
+      "admissionNumber": "2022012",
+      "course": "Business"
+    },
+    {
+      "name": "Reuben Katana",
+      "admissionNumber": "2022014",
+      "course": "IT"
+    },
+    {
+      "name": "Cliff Cheruiyot",
+      "admissionNumber": "2022015",
+      "course": "Business"
+    },
+    {
+      "name": "Doreen Johnson",
+      "admissionNumber": "2022016",
+      "course": "Media"
     }
+
   ]
   
