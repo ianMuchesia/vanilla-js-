@@ -1,15 +1,15 @@
 const express = require('express')
 const { getAllBooks, postBorrowed, createBook,  getBorrowedBooks, getStudents, postReturn } = require('../controllers')
-
+const authenticateUser = require("../middleware/authentication")
 const router = express.Router()
 
 
-router.get('/books', getAllBooks)
-router.get('/students', getStudents)
-router.post('/borrowed', postBorrowed)
-router.post('/return/:id', postReturn)
-router.post('/books', createBook)
-router.get('/borrowed', getBorrowedBooks)
+router.get('/books',authenticateUser, getAllBooks)
+router.get('/students',authenticateUser, getStudents)
+router.post('/borrowed',authenticateUser, postBorrowed)
+router.post('/return',authenticateUser, postReturn)
+router.post('/books',authenticateUser, createBook)
+router.get('/borrowed',authenticateUser, getBorrowedBooks)
 
 
 module.exports = router

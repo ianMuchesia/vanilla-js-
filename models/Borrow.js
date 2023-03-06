@@ -1,22 +1,28 @@
 const mongoose = require('mongoose');
 const Book = require('./Books');
+const { NotFoundError } = require('../errors');
 
 const Schema = mongoose.Schema
 
 const borrowSchema = new Schema({
-    student: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student',
-        required: true
-      },
-      book: {
-        type: mongoose.Schema.Types.ObjectId,
+  admissionNumber: {
+    type: String,
+    required: true,
+    ref: 'Student',
+  },
+      bookID: {
+        type: String,
+        required: true,
         ref: 'Book',
-        required: true
       },
       borrowDate: {
         type: Date,
         default: Date.now
+      },
+      returned:{
+        type: Boolean,
+        default: false
+
       },
       returnDate: {
         type: Date,
@@ -29,8 +35,7 @@ const borrowSchema = new Schema({
       defaulted: {
         type: Boolean,
         default: function () {
-          if(this.returnDate && this.returnDate > new Date(this.borrowDate.getTime() +
-          15 *24 *60 *100)){
+          if(this.returned === false && this.returnDate <= Date.now()){
             return true
           }
           return false
@@ -50,12 +55,12 @@ const borrowSchema = new Schema({
 )
 
 borrowSchema.pre('save', async function() {
-    const book = await Book.findById(this.book);
+    const book = await Book.findOne({bookID:this.bookID});
     if (!book) {
-      throw new Error('Book not found');
+      throw new NotFoundError('Book not found');
     }
     if (book.copies <= 0) {
-      throw new Error('Book not available');
+      throw new NotFoundError('Book not available as of now');
     }
     book.copies -= 1;
     await book.save();

@@ -3,7 +3,7 @@ require('dotenv').config()
 require('express-async-errors')
 const connectDB = require('./database/connectDB');
 const router = require('./routes/route');
-const authenticateUser = require('./middleware/authentication')
+
 const app = express();
 
 
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use('/api/v1',authenticateUser, booksRouter)
+app.use('/api/v1', booksRouter)
 app.use('/api/v1/auth', authRouter)
 
 app.use(notFoundMiddleWare)

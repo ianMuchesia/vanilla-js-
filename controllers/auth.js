@@ -4,9 +4,10 @@ const jwt = require("jsonwebtoken");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
 
 const register = async (req, res) => {
-  const admini = await Admini.create({ ...req.body });
+   
+   const admini = await Admini.create({ ...req.body });
   const token = admini.createJWT()
-  res.status(StatusCodes.CREATED).json({admini:{name:admini.name}, token });
+  res.status(StatusCodes.CREATED).json({admini:{name:admini.name}, token }); 
 };
 
 const login = async (req, res) => {
