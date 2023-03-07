@@ -5,6 +5,7 @@ const getBorrowedBooks = require('./getBorrowed')
 const getStudents = require('./getStudents')
 const {register, login} = require('./auth')
 const postReturn = require('./postReturn')
+const deleteBorrowed = require('./deleteBorrowed')
 
 
 module.exports = {
@@ -15,5 +16,6 @@ module.exports = {
     getStudents,
     register, 
     login,
-    postReturn
+    postReturn,
+    deleteBorrowed,
 }
