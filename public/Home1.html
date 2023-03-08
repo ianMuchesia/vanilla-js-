@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Library</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-center">
+          <div class="nav-logo">
+            <img src="/library.jpg" alt="" />
+          </div>
+          <div class="user"><h3>George Yugi</h3></div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <aside id="sidebar">
+        <ul class="menu">
+          <li>Due</li>
+          <li>Borrow</li>
+
+          <li>Borrowed</li>
+          <li>Return</li>
+          <li>Books</li>
+          <li>Damaged</li>
+          <li>Default</li>
+        </ul>
+      </aside>
+      <div class="content">
+        <p class="loading-text">Loading...</p>
+        <div class="tasks"></div>
+        <!-- due Today -->
+
+        <section class="Due">
+          <div class="due-today">
+            <div class="student">
+              <div class="">
+                <h6>Student Name:</h6>
+                <h3 class="name">GEORGE YUGI</h3>
+              </div>
+
+              <h4 class="admNo"><span>Reg No: </span> DIT/2000/2000</h4>
+            </div>
+            <div class="program">
+              <h4 class="course">
+                <span>Programme: </span> <br />DIPLOMA IN IT
+              </h4>
+              <h4 class="course">
+                <span>Year of Study: <br /></span> 2
+              </h4>
+            </div>
+
+            <div class="book">
+              <h3>
+                <span>Title: <br /> </span>
+                DATA STRUCTURES AND ALGORITHMS
+              </h3>
+              <h3 class="due-date">
+                <span>Due Date:<br /> </span>
+                30/30/3000
+              </h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- end of due today -->
+        <!-- start of borrow -->
+        <section class="Borrow">
+          <form class="form-borrow">
+            <label for="studentName" class="form-label">Name </label>
+            <input
+              type="text"
+              name="studentName"
+              id="StudentName"
+              class="form-input student-name-input"
+            />
+
+            <label for="Admission" class="form-label"
+              >Admission Number
+              <input
+                type="text"
+                name="admission"
+                id="Admission"
+                class="form-input student-adm-no"
+              />
+            </label>
+
+            <label for="course" class="form-label"
+              >Course
+              <input
+                type="text"
+                name="course"
+                id="course"
+                class="form-input course"
+              />
+            </label>
+
+            <label for="category" class="form-label"
+              >Category
+              <select id="category" class="form-input category-select">
+                <option value="--">--</option>
+                <option value="IT and Computing">IT and Computing</option>
+                <option value="Business and Economics">
+                  Business and Economics
+                </option>
+                <option value="Media and Journalism">
+                  Media and Journalism
+                </option>
+              </select>
+            </label>
+
+            <label for="book-name" class="form-label"
+              >Book Name
+              <input
+                type="text"
+                name="name"
+                id="book-name"
+                class="form-input book-name"
+              />
+            </label>
+
+            <label for="bookID" class="form-label"
+              >Book ID
+              <input
+                type="text"
+                name="name"
+                id="bookID"
+                class="form-input book-id"
+              />
+            </label>
+
+            <button type="submit" class="btn submit-btn">submit</button>
+          </form>
+        </section>
+        <!-- end of borrow -->
+        <!-- start of borrowed -->
+        <section class="Borrowed">
+          <div class="due-today">
+            <div class="student">
+              <h4 class="book-name">DATA STRUCTURES AND ALGORITHMS</h4>
+              <h4 class="bookNo">01000010</h4>
+            </div>
+            <div class="program due-date">
+              <span class="">Due Date: </span>
+              <h2 class="course">20/20/2000</h2>
+            </div>
+
+            <div class="book">
+              <h6 class="book">Borrowed By:</h6>
+              <h3>George Yugi</h3>
+            </div>
+          </div>
+        </section>
+        <!-- end of borrowed -->
+        <!-- start of Return -->
+        <section class="Return">
+          <form class="form-return">
+            <label for="studentID" class="form-label">
+              Student Admission Number
+            </label>
+            <input
+              type="text"
+              name="studentId"
+              id="studentID"
+              class="form-input student-adm-no-return"
+            />
+            <label for="bookID" class="form-label"> Book Id </label>
+            <input
+              type="text"
+              name="BookId"
+              id="bookID"
+              class="form-input book-id-return"
+            />
+            <label for="BookName" class="form-label"> Book Name </label>
+            <input
+              type="text"
+              name="BookName"
+              id="BookName"
+              class="form-input book-name-return"
+            />
+            <label for="damaged" class="form-label">
+              Is it Damaged? <br />Yes
+              <input type="radio" name="is-damaged" id="damaged" value="Yes"/>
+              No
+              <input type="radio" name="is-damaged" id="damaged"  value="No"/>
+            </label>
+
+            <label for="comment" class="form-label"> how Damaged </label>
+            <textarea name="report" id="comment" cols="30" rows="10"></textarea>
+            <button type="submit" class="btn submit-btn">submit</button>
+          </form>
+        </section>
+        <!-- End of Return -->
+        <!-- Start of Books -->
+        <section class="Books">
+          <table>
+            <tr>
+              <th>Book Id</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Author</th>
+              <th>Copies</th>
+            </tr>
+          </table>
+        </section>
+        <!-- End of Books -->
+
+        <!-- Start of Damaged-->
+        <section class="Damaged">
+          <div class="damaged-book">
+            <div class="student">
+              <h4 class="name">GEORGE YUGI</h4>
+              <h4 class="admNo">DIT/2000/2000</h4>
+            </div>
+            <div class="book-container">
+              <h4 class="bookName">DIPLOMA IN IT</h4>
+            </div>
+
+            <div class="reason-container">
+              <h4 class="reason">DATA STRUCTURES AND ALGORITHMS</h4>
+            </div>
+          </div>
+        </section>
+        <!-- End of Damaged -->
+        <!-- start of Default -->
+        <section class="Default">
+          <div class="due-today">
+            <div class="student">
+              <h4 class="name">GEORGE YUGI</h4>
+              <h4 class="admNo">DIT/2000/2000</h4>
+            </div>
+            <div class="program">
+              <h4 class="course">DIPLOMA IN IT</h4>
+            </div>
+
+            <div class="book">
+              <h4 class="book">DATA STRUCTURES AND ALGORITHMS</h4>
+            </div>
+          </div>
+        </section>
+        <!-- end of Default -->
+      </div>
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./index.js"></script>
+    <script src="./form.js"></script>
+  </body>
+</html>

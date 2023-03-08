@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap');
-*,
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Quicksand:wght@500&display=swap');*,
 ::after,
 ::before {
   box-sizing: border-box;
@@ -37,8 +36,8 @@ html {
 
 
     --backgroundColor: var(--grey-50);
-    --headingFont: 'Roboto', sans-serif;
-    --bodyFont: 'Nunito', sans-serif;
+    --headingFont: 'Poppins', sans-serif;
+    --bodyFont: 'Quicksand', sans-serif;
     --smallText: 0.7em;
     --max-width: 1280px;
     --borderRadius: 0.25rem;
@@ -209,6 +208,16 @@ aside{
 
    
 }
+.profile{
+  max-width: 30%;
+}
+.profile img{
+  height: 100%;
+  max-width: 100%;
+}
+.profile h4{
+  text-align: center;
+}
 .content{
     margin-left: 250px;
     padding: 1em;
@@ -251,6 +260,12 @@ aside{
     animation: spinner 0.6s linear infinite;
   }
 
+  
+  /*
+=============== 
+Students
+===============
+*/
 .due-today{
  
     justify-content: space-evenly;
@@ -261,9 +276,11 @@ aside{
     gap:1em;
     display: flex;
    margin-bottom: 1em;
+   color: var(--grey-200);
 
 
 }
+
 
 .student{
     display:grid;

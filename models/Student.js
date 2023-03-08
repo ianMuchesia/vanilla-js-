@@ -16,6 +16,7 @@ const studentSchema = new Schema({
     type: String,
     required: [true, "Student course must be included"],
   },
+  booksBorrowed: [{ type: mongoose.Schema.Types.ObjectId, ref: "Borrow" }],
 });
 
 const Student = mongoose.model("Student", studentSchema);

@@ -7,10 +7,53 @@ const allSections = document.querySelectorAll("section");
 const studentCard = document.querySelector('.due-today')
 const sideBar = document.querySelector("aside");
 const navBar = document.querySelector(".nav-center");
-const tableDOM = document.querySelector('table')
+const tableDOM = document.querySelector('.booksTable')
+const studentDOM = document.querySelector('.all-students')
+
+//functions 
+
+const localStorage_user = JSON.parse(localStorage.getItem('token'))
+const inMemoryToken = localStorage_user.token
+const fetchSettings={
+  method: 'get',
+      headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${inMemoryToken}`
+
+    }
+}
+function generateTable(table, data) {
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
 
 
 
+//fetching functions
+
+const fetchAllBooks =async()=>{
+  const response = await fetch("http://localhost:3000/api/v1/books", fetchSettings);
+  const data = await response.json();
+  return data;
+}
+
+const fetchAllStudents = async()=>{
+  const response = await fetch("http://localhost:3000/api/v1/students", fetchSettings);
+  const data = await response.json();
+  return data;
+}
+const fetchAllBorrowedBooks = async()=>{
+  const response = await fetch("http://localhost:3000/api/v1/borrowed", fetchSettings);
+  const data = await response.json();
+  return data;
+}
 
 
 
@@ -18,18 +61,18 @@ const displaySection = (el) => {
   allSections.forEach((item) => {
     item.style.display = "none";
 
-    navBar.style.backgroundColor = "var(--primary-600)";
-    sideBar.style.backgroundColor = "var(--primary-300)";
-    studentCard.style.backgroundColor = "var(--primary-300)"
+   // navBar.style.backgroundColor = "var(--primary-600)";
+   // sideBar.style.backgroundColor = "var(--primary-300)";
+   // studentCard.style.backgroundColor = "var(--primary-300)"
 
     if (item.classList.value === el) {
       item.style.display = "block";
     }
 
     if (el === "Damaged" || el === "Default") {
-      navBar.style.backgroundColor = "#f70202";
-      sideBar.style.backgroundColor = "#f05b5b";
-      studentCard.style.backgroundColor = "#f05b5b"
+      //navBar.style.backgroundColor = "#f70202";
+      //sideBar.style.backgroundColor = "#f05b5b";
+      //studentCard.style.backgroundColor = "#f05b5b"
     }
   });
 };
@@ -64,39 +107,28 @@ sidebarButton.forEach((item) => {
   });
 });
 
+
+
+
 const showStudents = async()=>{
   try {
-    const {data} = await axios.get('/api/v1/students')
     
-    const allStudents = data.map(student=>{
-      const {admissionNumber, course , name , _id } = student
-      return `   <a href="student.html?id=${_id}" class="due-today">
-      <div class="student">
-        <div class="">
-          <h6>Student Name:</h6>
-        <h3 class="name">${name}</h3>
-        </div>
-        
-        <h4 class="admNo">
-          <span>Reg No: </span>${admissionNumber}</h4>
-      </div>
-      <div class="program">
-        <h4 class="course"><span>Programme: </span> <br/>${course}</h4>
-        <h4 class="course"><span>Year of Study: <br/></span> 2</h4>
+    
+    const Students =await  fetchAllStudents()
+    const studentsArray = Students.map(student=>{
+      return{
+        regNo: student.admissionNumber,
+        name: student.name,
+        course: student.course,
+        yearOfStudy: 2.
+      }
+    }) 
 
-      </div>
-
-      <div class="book">
-        <h3 >
-          <span>Title: <br/> </span>
-          DATA STRUCTURES AND ALGORITHMS</h3>
-          <h3  class="due-date">
-            <span >Due Date:<br/> </span>
-            30/30/3000</h3>
-      </div>
-    </a>` 
-    }).join('')
-    dueDOM.innerHTML = allStudents
+    generateTable(studentDOM, studentsArray)
+    
+     
+     
+   
   } catch (error) {
     console.log(error)
     dueDOM.innerHTML = '<h5 class="empty-list">There was an error, please try later....</h5>'
@@ -106,23 +138,13 @@ const showStudents = async()=>{
 showStudents()
 
 
-function generateTable(table, data) {
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-      let cell = row.insertCell();
-      let text = document.createTextNode(element[key]);
-      cell.appendChild(text);
-    }
-  }
-}
 
 //fetch all data books
 const showAllBooks=async ()=>{
   try {
-    const {data:{books}} = await axios.get('/api/v1/books')
-    
-    let tableArray = books.map(book=>{
+   const {books} = await fetchAllBooks()
+    console.log(books)
+    const tableArray = books.map(book=>{
       return{
         _id:book._id.slice(0,5),
         Name:book.title,
