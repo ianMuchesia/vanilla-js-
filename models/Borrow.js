@@ -6,15 +6,15 @@ const Schema = mongoose.Schema;
 
 const borrowSchema = new Schema(
   {
-    admissionNumber: {
+    student: {
       type: String,
       required: true,
       ref: "Student",
     },
-    bookID: {
-      type: String,
-      required: true,
+    book: {
+      type: Schema.Types.ObjectId,
       ref: "Book",
+      required: true,
     },
     borrowDate: {
       type: Date,
@@ -55,7 +55,7 @@ const borrowSchema = new Schema(
 );
 
 borrowSchema.pre("save", async function () {
-  const book = await Book.findOne({ bookID: this.bookID });
+  const book = await Book.findOne({ _id:this.book });
   if (!book) {
     throw new NotFoundError("Book not found");
   }

@@ -1,43 +1,54 @@
 const { NotFoundError, BadRequestError } = require("../errors");
 const Book = require("../models/Books");
 const Borrow = require("../models/Borrow");
+const Student = require("../models/Student");
 
 const postReturn = async (req, res) => {
   const { admissionNumber, bookID, damaged, damagedReason } = req.body;
+  
 
-  const returnBook = await Borrow.findOne()
+  const returnStudent = await Student.findOne()
     .where("admissionNumber")
-    .equals(admissionNumber)
-    .where("bookID")
-    .equals(bookID);
+    .equals(admissionNumber);
+
+  if (!returnStudent) {
+    throw new NotFoundError(`no student matches the details`);
+  }
+  
+  const returnBook = await Book.findOne({ bookID: bookID });
 
   if (!returnBook) {
     throw new NotFoundError(`no borrowed book matches the details`);
   }
 
-  const updateBook = await Book.findOne({ bookID: bookID });
-
-  if (!updateBook) {
-    throw new NotFoundError(`no book matches the details`);
-  }
-
   if (damaged && !damagedReason) {
     throw new BadRequestError(`no damaged reason provided`);
   }
-  if (damaged === true && damagedReason) {
-    returnBook.damaged = true;
-    returnBook.damagedReason = damagedReason;
-    await returnBook.save();
 
-    res.status(200).json({ returnBook });
+  const returnBorrowed = await Borrow.findOne()
+    .where("student")
+    .equals((returnStudent._id).toString())
+    .where("book")
+    .equals((returnBook._id).toString());
+ 
+  if(!returnBorrowed){
+    throw new NotFoundError(`no borrowed book matches the details`);
   }
-  if (returnBook.defaulted) {
+
+  if (damaged === true && damagedReason) {
+    returnBorrowed.damaged = true;
+    returnBorrowed.damagedReason = damagedReason;
+    await returnBorrowed.save(); 
+
+    res.status(200).json({ returnBorrowed });
+  }
+  if (returnBorrowed.defaulted) {
     res.status(200).json({ msg: "Added to default list" });
   }
-  if (returnBook.damaged === false && returnBook.defaulted === false) {
-    updateBook.copies += 1;
-    await updateBook.save();
-    await Borrow.findOneAndDelete({ _id: returnBook._id });
+  if (returnBorrowed.damaged === false && returnBorrowed.defaulted === false) {
+    returnBook.copies += 1;
+    await returnBook.save();
+    await Borrow.findOneAndDelete({ _id: returnBorrowed._id });
     res.status(200).json({ msg: "SUCCESS!" });
   }
 };
