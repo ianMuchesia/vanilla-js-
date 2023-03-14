@@ -10,6 +10,22 @@ const navBar = document.querySelector(".nav-center");
 const tableDOM = document.querySelector('.booksTable')
 const studentDOM = document.querySelector('.all-students')
 const borrowedContainer = document.querySelector('.borrowed-container')
+const booksSection = document.querySelector('.Book')
+const BorrowedSection = document.querySelector('.Borrowed')
+const DamagedSection = document.querySelector('.Damaged')
+const DefaultSection = document.querySelector('.Default')
+
+const Loader = ` <div class="loader">
+<div class="square" id="sq1"></div>
+<div class="square" id="sq2"></div>
+<div class="square" id="sq3"></div>
+<div class="square" id="sq4"></div>
+<div class="square" id="sq5"></div>
+<div class="square" id="sq6"></div>
+<div class="square" id="sq7"></div>
+<div class="square" id="sq8"></div>
+<div class="square" id="sq9"></div>
+</div>`
 //functions 
 
 const localStorage_user = JSON.parse(localStorage.getItem('token'))
@@ -149,6 +165,7 @@ showStudents()
 //fetch all data books
 const showAllBooks=async ()=>{
   try {
+
    const {books} = await fetchAllBooks()
   
     const tableArray = books.map(book=>{
@@ -175,8 +192,10 @@ showAllBooks()
 
 const showAllBorrowed=async()=>{
   try {
+    studentCard.innerHTML = Loader
+    borrowedContainer.innerHTML = Loader
     const data = await fetchAllBorrowedBooks()
-    console.log(data)
+   
     const allBorowedBooks = data.map(item=>{
       const {student, returnDate , book} = item
       return `
@@ -223,7 +242,7 @@ const showAllBorrowed=async()=>{
     borrowedContainer.innerHTML =allBorrowedContainer
 
 
-
+   
 
   } catch (error) {
     console.log(error)
@@ -327,20 +346,22 @@ const comment = document.querySelector('#comment')
     console.log(value);
     if( !StudentAdmNoInputReturn.value|| !bookIDReturnForm.value || !bookNameReturnForm.value){
       alert("please fill all inputs")
+      return;
     }
-    if(value && !comment.value){
+    if(value ==="Yes" && !comment.value){
       alert("Include the damaged description")
+      return;
     }
     const myValue = {
 
       admissionNumber:StudentAdmNoInputReturn.value,
       bookID:bookIDReturnForm.value,
       book_name:bookNameReturnForm.value,
-      comment:comment.value,
+      damagedReason:comment.value,
       damaged:value
     }
 
-     console.log(myValue)
+     
      const postSettings={
       method: 'post',
           headers: {
@@ -354,19 +375,154 @@ const comment = document.querySelector('#comment')
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/borrowed')
+      const response = await fetch('http://localhost:3000/api/v1/return',postSettings )
+      const data =await response.json()
+      console.log(data)
+      if(response.ok){
+        alert(data.msg)
+      }else{
+        alert(data.msg)
+      }
     } catch (error) {
-      
+      console.log(error)
     }
 
 }) 
 
 
-//Books Borrowed 
+//Delete Borrowed
+
+
+//get damaged Books
+const damagedContainer = document.querySelector('.damaged-container') 
+const showDamagedBooks = async()=>{
+
+
+  try {
+    damagedContainer.innerHTML = Loader
+    const response = await fetch('http://localhost:3000/api/v1/damaged', fetchSettings)
+    const data = await response.json()
+    
+    const allDamagedBooks = data.map(item=>{
+      const {book , student , borrowDate , damagedReason , _id } = item
+      return `
+      <div class="damaged-card">
+      <div class="damaged-student">
+        <h5 class="damaged-name"><span>Student Name: <br/></span>${student.name}</h5>
+        <h5 class="damaged-admNo"><span>Student Name: <br/></span>${student.admissionNumber}</h5>
+      </div>
+      <div class="damaged-student book-damaged-container">
+        <h5 class="damagedBookName"><span>Book Name: <br/></span>${book.title}</h5>
+        <h5 class="damagedBookID"><span>Book Id: <br/></span>${book.bookID}</h5>
+      </div>
+
+      <div class="damaged-student reason-container">
+        <h5 class="damaged-reason">${damagedReason}</h5>
+        <!--<span>Remove</span>
+        <i class="bi bi-trash3 delete-damaged-button" data-id=${_id}></i>-->
+      </div>
+    </div>
+      `
+    }).join("")
+    
+    damagedContainer.innerHTML = allDamagedBooks
+  } catch (error) {
+    console.log(error)
+    damagedContainer.innerHTML ='<h5 class="empty-list">There was an error, please try later....</h5>'
+  }
+}
+
+showDamagedBooks()
+
+
+
+
+//show defaulted Books
+const defaultedContainer = document.querySelector('.defaulted-container') 
+const showDefaultedBooks = async()=>{
+
+
+  try {
+    defaultedContainer.innerHTML = Loader
+    const response = await fetch('http://localhost:3000/api/v1/defaulted', fetchSettings)
+    const data = await response.json()
+    
+    const allDefaultedBooks = data.map(item=>{
+      const {book , student} = item
+      return `
+      <div class="defaulted-card">
+      <div class="student">
+        <h5 class="name"><span>Student Name: <br/></span> ${student.name}</h5>
+        <h5 class="admNo"><span>Reg No: <br/></span>${student.admissionNumber}</h5>
+      </div>
+      <div class="program">
+        <h5 class="course"><span>Course: <br/></span>${student.course}</h5>
+      </div>
+
+      <div class="book">
+        <h5 class="book"><span>Book Name: <br/></span>${book.title}</h5>
+        <h5 class="book"><span>Book Id: <br/></span>${book.bookID}</h5>
+        <h5 class="remove"><span>Remove<br/></span><i class="bi bi-trash3" data_id=${_id}></i></h5>
+      </div>
+    </div>
+      `
+    })
+    if(allDefaultedBooks.length<1){
+      defaultedContainer.innerHTML = '<h5 class="empty-list">No Defaulted Books</h5>'
+    }else{
+      defaultedContainer.innerHTML = allDefaultedBooks.join("")
+    }
+  } catch (error) {
+    console.log(error)
+  defaultedContainer.innerHTML ='<h5 class="empty-list">There was an error, please try later....</h5>' 
+  }
+}
+
+showDefaultedBooks()
+
+
+
+//Log Out
+
+const logOut = document.querySelector('.logOut')
+
+
+logOut.addEventListener('click', ()=>{
+  localStorage.removeItem("token")
+  location.replace("index.html")
+
+})
+
+
+/* 
+const deleteBtn = document.querySelectorAll('i')
+console.log(deleteBtn) */
 
 
 
 
 
-
-
+/*   deleteButtons.forEach(deleteButton => {
+    deleteButton.addEventListener('click', async () => {
+      const id = deleteButton.dataset.id;
+      console.log(" iam here")
+       try {
+        const response = await fetch(`http://localhost:3000/api/v1/borrowed/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json, text/plain, *//*',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${inMemoryToken}`
+        }});
+        const {msg} = response.json()
+        if (response.ok) {
+          showDamagedBooks()
+          alert(msg)
+        } else {
+         alert(msg)
+        }
+      } catch (error) {
+        console.log(error);
+      } 
+    });
+  }); */

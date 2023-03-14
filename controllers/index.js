@@ -8,7 +8,8 @@ const postReturn = require('./postReturn')
 const deleteBorrowed = require('./deleteBorrowed')
 const getStudentsBorrow = require('./getStudentsBorrow')
 const createStudent = require('./createStudent')
-
+const getDamagedBooks = require('./getDamagedBooks')
+const getDefaultedBooks = require('./getDefaulted')
 
 module.exports = {
     getAllBooks,
@@ -22,5 +23,7 @@ module.exports = {
     deleteBorrowed,
     getStudentsBorrow,
     createStudent,
-    getSingleBook
+    getSingleBook,
+    getDamagedBooks,
+    getDefaultedBooks,
 }
