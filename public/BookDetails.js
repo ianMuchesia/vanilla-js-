@@ -14,22 +14,27 @@ const fetchSettings = {
 };
 
 const showDetails = async () => {
-  const response = await fetch(
-    `http://localhost:3000/api/v1/books/${id}`,
-    fetchSettings
-  );
-  const {book} = await response.json();
-
-  bookDetails.innerHTML =
-  `
-  <h1>${book.title}</h1><h3><span>Author: </span>
-  Author Me</h3>
-  <h3><span>category: </span>
-  ${book.category}</h3>
-  <p>${book.description}</p>
-  <h3>${book.copies? book.copies: "Book Not Available Right Now"}</h3>
-  `
-  
+ 
+  try {
+    const response = await fetch(
+        `http://localhost:3000/api/v1/books/${id}`,
+        fetchSettings
+      );
+      const {book} = await response.json();
+    
+      bookDetails.innerHTML =
+      `
+      <h4>Book ID : ${book.bookID}</h4>
+      <h1 class="book-title">${book.title}</h1><h3><span>Author: </span>
+      ${book.author}</h3>
+      <h3><span>category: </span>
+      ${book.category}</h3>
+      <p>${book.description}</p>
+      <h4 class="book-copies">${book.copies? "Copies Remainig: "+ book.copies: "Book Not Available Right Now"}</h4>
+      `
+  } catch (error) {
+    conso
+  }
 };
 
 showDetails();

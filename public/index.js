@@ -311,16 +311,12 @@ const comment = document.querySelector('#comment')
 
 
 
-    console.log(isDamaged)
 
     
- formReturn.addEventListener('submit',(e)=>{
+ formReturn.addEventListener('submit',async(e)=>{
     e.preventDefault()
    
-    const studentAdmNo = StudentAdmNoInputReturn.value
-    const bookID = bookIDReturnForm.value
-    const book_Name = bookNameReturnForm.value
-    const commentValue = comment.value
+   
     let value;
     for (const radio of isDamaged) {
       if (radio.checked) {
@@ -329,16 +325,40 @@ const comment = document.querySelector('#comment')
       }
     }
     console.log(value);
+    if( !StudentAdmNoInputReturn.value|| !bookIDReturnForm.value || !bookNameReturnForm.value){
+      alert("please fill all inputs")
+    }
+    if(value && !comment.value){
+      alert("Include the damaged description")
+    }
     const myValue = {
 
-        studentAdmNo,
-        bookID,
-        book_Name,
-        commentValue,
-        value,
+      admissionNumber:StudentAdmNoInputReturn.value,
+      bookID:bookIDReturnForm.value,
+      book_name:bookNameReturnForm.value,
+      comment:comment.value,
+      damaged:value
     }
 
      console.log(myValue)
+     const postSettings={
+      method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${inMemoryToken}`
+    
+        },
+        body:JSON.stringify(myValue)
+
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/api/v1/borrowed')
+    } catch (error) {
+      
+    }
+
 }) 
 
 
