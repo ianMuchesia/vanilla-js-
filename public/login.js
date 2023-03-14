@@ -29,10 +29,11 @@ form.addEventListener('submit', async(e) => {
     if(response.ok){
         location.replace("Home.html")
     }else{
-        alert('Something Wrong happened try again later')
+        alert("Invalid Details")
     }
  
    } catch (error) {
     console.log(error)
+    alert(error)
    }
 })

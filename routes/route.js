@@ -8,12 +8,18 @@ const {
   postReturn,
   deleteBorrowed,
   getStudentsBorrow,
+  createStudent,
+  getSingleBook,
 } = require("../controllers");
 const authenticateUser = require("../middleware/authentication");
 const router = express.Router();
 
+
+
+router.get("/books/:id", authenticateUser, getSingleBook);
 router.get("/books", authenticateUser, getAllBooks);
 router.get("/students", authenticateUser, getStudents);
+router.post('/students', authenticateUser, createStudent)
 router.post("/borrowed", authenticateUser, postBorrowed);
 router.post("/return", authenticateUser, postReturn);
 router.post("/books", authenticateUser, createBook);

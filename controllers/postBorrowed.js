@@ -5,37 +5,38 @@ const { StatusCodes } = require("http-status-codes");
 const { NotFoundError, BadRequestError } = require("../errors");
 
 const postBorrowed = async (req, res) => {
-  const { student_id, book_id } = req.body;
+  const { studentAdmNo, book_Id } = req.body;
+  console.log(book_Id)
 
-  const book = await Book.findOne({ _id: book_id });
+  const book = await Book.findOne({ bookID: book_Id });
   if (!book) {
-    throw new NotFoundError(`no book found with id: ${book_id}`);
+    throw new NotFoundError(`no book found with id: ${book_Id}`);
   }
 
-  const student = await Student.findOne({ _id: student_id });
+  const student = await Student.findOne({ admissionNumber: studentAdmNo });
   if (!student) {
     throw new NotFoundError(
-      `no students found with Admission Number: ${student_id}`
+      `no students found with Admission Number: ${studentAdmNo}`
     );
   }
 
   const alreadyExist = await Borrow.findOne()
     .where("student")
-    .equals(student_id)
+    .equals(student._id)
     .where("book")
-    .equals(book_id);
+    .equals(book._id);
 
-    console.log(alreadyExist)
+    
 
   if (alreadyExist) {
     throw new BadRequestError("student has already borrowed the book");
   }
   const borrowBook = await Borrow.create({
-    student: student_id,
-    book: book_id,
+    student: student._id,
+    book: book._id,
   });
 
-  res.status(StatusCodes.CREATED).json({ borrowBook });
+  res.status(StatusCodes.CREATED).json({msg: "Success!!"}); 
 };
 
 module.exports = postBorrowed;

@@ -97,7 +97,9 @@ html {
     border-radius: 6px;
     border: 3px solid var(--scrollbarBG);
   }
-  
+  .Students{
+    display: none;
+  }
   .Due{
     display: none;
   }
@@ -315,6 +317,9 @@ Forms
     justify-content: center;
     height: 100%;
   }
+  .borrow-header{
+    text-align: center;
+  }
   .form-label {
     display: block;
     font-size: 1.2rem;
@@ -348,6 +353,84 @@ Forms
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
   }
+  .submit-btn{
+    background: #02143a90;
+    color: #fff;
+    padding: 0.5em 1.2em;
+    border: none;
+    font-size:1.6rem ;
+    cursor: pointer;
+    transition: 0.4s ease-in;
+    border-radius: 15px;
+  }
+  .submit-btn:hover{
+    background: #fff;
+    color: #0c2b6e;
+  }
+  
+
+        /*
+=============== 
+Home
+===============
+*/
+  .home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+.image-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-container i{
+    font-size: 12rem;
+
+}
+.intro-home{
+    margin: 2em;
+}
+.intro-home h1{
+    font-size: 3rem;
+    text-align: center;
+}
+.buttons-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+.group-buttons-one{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em;
+}
+.group-buttons-two{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em;
+}
+.buttons-group button{
+    background-color: #02113180;
+    border: none;
+    color: #fff;
+    padding: 0.75em 1.3em;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.buttons-group button:hover{
+    background-color: #fff;
+    color: #0c2b6e;
+    transition: 0.3s ease-in;
+}
+
+
   
       /*
 =============== 
@@ -355,9 +438,41 @@ Students
 ===============
 */
 .Due{
-  padding: 1rem;
+  width: 100%;
+  margin-top: 200px;
+  
+}
+.Due h1{
+  text-align: center;
+}
+.due-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1.4em;
 
 }
+.due-card{
+  padding: 0.5rem;
+  background: #02113180;
+  border-radius: 0.9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 70%;
+
+
+}
+.due-card span{
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.book-section-due{
+
+  overflow: hidden;
+}
+
 .Due table{
   border:1px solid #021131;
   padding: 1.5em;
@@ -414,3 +529,37 @@ Books
   text-align: center;
 }
 
+    /*
+=============== 
+borrowed
+===============
+*/
+.borrow-header{
+  text-align: center;
+}
+.borrowed-container{
+  margin-top: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap:1.3em;
+}
+.borrowed-card{
+  background: #02113150;
+  padding: 1em;
+
+ 
+  
+}
+.book-borrowed-name{
+  font-size: 1.4rem;
+  text-align: center;
+
+}
+.borrowed-container a{
+  color: #fff;
+  border: 2px solid #021131;
+  padding: 0.4em 0.75em;
+  background: #02113160;
+
+}
