@@ -1,7 +1,7 @@
 const {getAllBooks , getSingleBook} = require('./getAllBooks')
 const createBook = require('./createBook')
 const postBorrowed = require('./postBorrowed')
-const getBorrowedBooks = require('./getBorrowed')
+const {getBorrowedBooks , getSingleBorrowed} = require('./getBorrowed')
 const getStudents = require('./getStudents')
 const {register, login} = require('./auth')
 const postReturn = require('./postReturn')
@@ -10,6 +10,7 @@ const getStudentsBorrow = require('./getStudentsBorrow')
 const createStudent = require('./createStudent')
 const getDamagedBooks = require('./getDamagedBooks')
 const getDefaultedBooks = require('./getDefaulted')
+
 
 module.exports = {
     getAllBooks,
@@ -26,4 +27,5 @@ module.exports = {
     getSingleBook,
     getDamagedBooks,
     getDefaultedBooks,
+    getSingleBorrowed,
 }

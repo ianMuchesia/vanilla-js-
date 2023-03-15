@@ -1,3 +1,4 @@
+const { NotFoundError } = require("../errors");
 const Borrow = require("../models/Borrow");
 const Student = require("../models/Student");
 const { StatusCodes } = require("http-status-codes");
@@ -32,4 +33,24 @@ res.status(StatusCodes.OK).json(borrowedBooks);
 
 };
 
-module.exports = getBorrowedBooks;
+//should be get single damaged to be changed soon
+const getSingleBorrowed = async (req, res)=>{
+     const { id } = req.params 
+     const borrowed = await Borrow.findOne({_id:id})
+     .populate({
+      path: 'student',
+      select: 'name course admissionNumber',
+    })
+    .populate({
+      path: 'book',
+      select: 'title bookID category',
+    })
+    .where('damaged')
+    .equals(true)
+     if(!borrowed){
+      throw new NotFoundError(`No borrowed matxg the details with id:${id}`)
+     }
+     res.status(StatusCodes.OK).json(borrowed)
+}
+
+module.exports = {getBorrowedBooks, getSingleBorrowed};

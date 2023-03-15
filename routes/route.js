@@ -12,6 +12,7 @@ const {
   getSingleBook,
   getDefaultedBooks,
   getDamagedBooks,
+  getSingleBorrowed,
 } = require("../controllers");
 const authenticateUser = require("../middleware/authentication");
 const router = express.Router();
@@ -26,6 +27,7 @@ router.post("/borrowed", authenticateUser, postBorrowed);
 router.post("/return", authenticateUser, postReturn);
 router.post("/books", authenticateUser, createBook);
 router.get("/borrowed", authenticateUser, getBorrowedBooks);
+router.get("/borrowed/:id", authenticateUser, getSingleBorrowed);
 router.get("/defaulted", authenticateUser, getDefaultedBooks);
 router.get("/damaged", authenticateUser, getDamagedBooks);
 router.get("/StudentBorrowed", authenticateUser, getStudentsBorrow);

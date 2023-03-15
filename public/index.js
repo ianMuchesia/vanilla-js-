@@ -170,11 +170,12 @@ const showAllBooks=async ()=>{
   
     const tableArray = books.map(book=>{
       return{
-        _id:book._id.slice(0,5),
+        _id:book.bookID,
         Name:book.title,
         Category:book.category,
         Author:book.author,
         copies:book.copies,
+      
         
       }
     })
@@ -418,14 +419,20 @@ const showDamagedBooks = async()=>{
 
       <div class="damaged-student reason-container">
         <h5 class="damaged-reason">${damagedReason}</h5>
-        <!--<span>Remove</span>
-        <i class="bi bi-trash3 delete-damaged-button" data-id=${_id}></i>-->
+        <span>Remove</span>
+        <a href="delete.html?id=${_id}"> <i class="bi bi-trash3 delete-damaged-button" data-id=${_id}></i></a>
+       
       </div>
     </div>
       `
-    }).join("")
+    })
+    if(allDamagedBooks.length > 0){
+      damagedContainer.innerHTML = allDamagedBooks.join("")
+    }else{
+      damagedContainer.innerHTML = '<h5 class="empty-list">No Damaged books as of Now....</h5>'
+    }
     
-    damagedContainer.innerHTML = allDamagedBooks
+    
   } catch (error) {
     console.log(error)
     damagedContainer.innerHTML ='<h5 class="empty-list">There was an error, please try later....</h5>'

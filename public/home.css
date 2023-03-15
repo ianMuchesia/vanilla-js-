@@ -278,7 +278,7 @@ aside{
 .menu li{
 
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1rem;
     width: 100%;
     text-align: center;
     transition: 0.5s ease-in-out;
@@ -286,6 +286,7 @@ aside{
 }
 .menu li:hover{
     transform: scale(1.3);
+    text-decoration: underline;
 
 }
  .logOut{
@@ -302,7 +303,12 @@ aside{
 Forms
 ===============
 */
-
+.Return{
+  margin-top: 300px;
+}
+.Return h1{
+  text-align: center;
+}
 
 .form-borrow, .form-return {
     width: 90vw;
@@ -412,6 +418,7 @@ Home
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap:1.3em;
 
 
 }
@@ -445,12 +452,12 @@ Home
   
       /*
 =============== 
-Students
+Due
 ===============
 */
 .Due{
   width: 100%;
-  margin-top: 200px;
+  margin-top: 400px;
   
 }
 .Due h1{
@@ -488,6 +495,18 @@ Students
   border:1px solid #021131;
   padding: 1.5em;
 }
+      /*
+=============== 
+Students
+===============
+*/
+.Students{
+
+  margin-top: 400px;
+}
+.Students h1{
+  text-align: center;
+}
 
 .all-students th{
   border: 1px solid white;
@@ -516,7 +535,7 @@ Books
 
 .Books{
   padding: 1rem;
-  margin-top: 1200px;
+  margin-top: 1400px;
 
 }
 .Books h1{
@@ -545,11 +564,14 @@ Books
 borrowed
 ===============
 */
+.Borrowed{
+  margin-top: 700px;
+}
 .borrow-header{
   text-align: center;
 }
 .borrowed-container{
-  margin-top: 1500px;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -577,9 +599,12 @@ borrowed
 
         /*
 =============== 
-Home
+Damaged
 ===============
 */
+.Damaged{
+  margin-top: 200px;
+}
 .Damaged h1{
   text-align: center;
 }
