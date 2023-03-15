@@ -3,7 +3,7 @@ require('dotenv').config()
 require('express-async-errors')
 const connectDB = require('./database/connectDB');
 const router = require('./routes/route');
-
+const cors = require('cors')
 const app = express();
 
 
@@ -21,7 +21,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler')
 //middleware
 app.use(express.static('./public'))
 app.use(express.json());
-
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 
 //routes
