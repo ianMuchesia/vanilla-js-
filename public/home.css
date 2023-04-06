@@ -135,60 +135,38 @@ Container
     color: var(--grey-200);
     background-color: #0c2b6e;
     overflow-y: auto;
-    display: grid;
+   
     font-family: var(--bodyFont);
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px auto 1fr auto;
-    grid-gap: 10px;
-    grid-template-areas:
-      "header"
-      "aside"
-      "content"
-      "footer";
+   
   }
 
-  @media (min-width: 500px){
-    .container{
-      grid-template-columns: auto 1fr;
-      grid-template-rows: auto 1fr auto;
-      grid-template-areas:
-        "header"
-        "aside"
-        "content"
-        "footer";
-    }
-  }
 
-  @media (min-width: 800px){
-    .container{
-      grid-template-areas:
-      /* Only change code below this line */
-        "aside header"
-        "aside content"
-        "aside footer";
-      /* Only change code above this line */
-    }
-  }
 
+ 
  
   
 
-  footer{
-    grid-area: footer;
-    background-color: #0b245a;
-    border-radius: 5px;
-  }
+  
 
   main{
     
-    grid-area: content;
-    max-height: 80vh;
-    padding:1em;
+   
+    
+   
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+    margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+  min-height: 100vh
    
+  }
+  @media screen and (min-height: 450px) {
+    main{
+      margin-left: 260px; /* Same as the width of the sidebar */
+      padding: 0px 10px;
+    }
   }
       /*
 =============== 
@@ -204,11 +182,19 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 0.7em 1.5em;
+
+  margin-left: 160px;
 }
 header img{
   height: 5rem;
   width: 5rem;
   border-radius: 5px;
+}
+@media screen and (min-height: 450px) {
+  header{
+    margin-left: 260px; /* Same as the width of the sidebar */
+   
+  }
 }
 
       /*
@@ -217,10 +203,25 @@ Footer
 ===============
 */
 
+footer{
+ 
+  background-color: #0b245a;
+  border-radius: 5px;
+}
+footer{
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
 footer h5{
   text-align: center;
 }
-
+@media screen and (min-height: 450px) {
+  footer{
+    margin-left: 260px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+  }
+}
 
 
 
@@ -232,19 +233,26 @@ Sidebar
 */
 aside{
 
-     grid-area: aside;
+  
     background-color: #021131;
      padding: 0em 0em;
      border-radius: 5px;
    }
   .sidebar{
-    
-    height: 100vh;
+    padding: 0.3em 2.5em;
+    position: fixed;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #021131;
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin: 0.3em 2.5em;
+    
   
 }
 .profile{
@@ -298,14 +306,19 @@ aside{
   font-size: 1rem;
  } 
 
+ @media screen and (min-height: 450px) {
+  .sidebar{
+      width: 260px; 
+  }
+ }
+
+
     /*
 =============== 
 Forms
 ===============
 */
-.Return{
-  margin-top: 300px;
-}
+
 .Return h1{
   text-align: center;
 }
@@ -457,7 +470,7 @@ Due
 */
 .Due{
   width: 100%;
-  margin-top: 400px;
+ 
   
 }
 .Due h1{
@@ -500,10 +513,7 @@ Due
 Students
 ===============
 */
-.Students{
 
-  margin-top: 400px;
-}
 .Students h1{
   text-align: center;
 }
@@ -535,7 +545,7 @@ Books
 
 .Books{
   padding: 1rem;
-  margin-top: 1400px;
+ 
 
 }
 .Books h1{
@@ -565,7 +575,8 @@ borrowed
 ===============
 */
 .Borrowed{
-  margin-top: 700px;
+  margin-top:1em;
+  padding:1em;
 }
 .borrow-header{
   text-align: center;
@@ -602,9 +613,8 @@ borrowed
 Damaged
 ===============
 */
-.Damaged{
-  margin-top: 200px;
-}
+
+
 .Damaged h1{
   text-align: center;
 }
@@ -653,11 +663,15 @@ Damaged
 Defaulted
 ===============
 */
+
+.Default h1{
+  text-align: center;
+}
 .defaulted-container{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1em;
-  align-items: center;
+ 
 }
 .defaulted-card{
   font-family: 'Poppins';
@@ -688,75 +702,3 @@ Loader
 
 */
 
-
-.Loader{
-  display: none;
-} 
-@keyframes loader_5191 {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.square {
-  background: #ddd;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -5px;
-  margin-left: -5px;
-}
-
-#sq1 {
-  margin-top: -25px;
-  margin-left: -25px;
-  animation: loader_5191 675ms ease-in-out 0s infinite alternate;
-}
-
-#sq2 {
-  margin-top: -25px;
-  animation: loader_5191 675ms ease-in-out 75ms infinite alternate;
-}
-
-#sq3 {
-  margin-top: -25px;
-  margin-left: 15px;
-  animation: loader_5191 675ms ease-in-out 150ms infinite;
-}
-
-#sq4 {
-  margin-left: -25px;
-  animation: loader_5191 675ms ease-in-out 225ms infinite;
-}
-
-#sq5 {
-  animation: loader_5191 675ms ease-in-out 300ms infinite;
-}
-
-#sq6 {
-  margin-left: 15px;
-  animation: loader_5191 675ms ease-in-out 375ms infinite;
-}
-
-#sq7 {
-  margin-top: 15px;
-  margin-left: -25px;
-  animation: loader_5191 675ms ease-in-out 450ms infinite;
-}
-
-#sq8 {
-  margin-top: 15px;
-  animation: loader_5191 675ms ease-in-out 525ms infinite;
-}
-
-#sq9 {
-  margin-top: 15px;
-  margin-left: 15px;
-  animation: loader_5191 675ms ease-in-out 600ms infinite;
-}

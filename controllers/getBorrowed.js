@@ -45,10 +45,9 @@ const getSingleBorrowed = async (req, res)=>{
       path: 'book',
       select: 'title bookID category',
     })
-    .where('damaged')
-    .equals(true)
+    
      if(!borrowed){
-      throw new NotFoundError(`No borrowed matxg the details with id:${id}`)
+      throw new NotFoundError(`No borrowed book matches the details with id:${id}`)
      }
      res.status(StatusCodes.OK).json(borrowed)
 }

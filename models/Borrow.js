@@ -34,12 +34,7 @@ const borrowSchema = new Schema(
     },
     defaulted: {
       type: Boolean,
-      default: function () {
-        if (this.returned === false && this.returnDate <= Date.now()) {
-          return true;
-        }
-        return false;
-      },
+      default: false,
       //If the returnDate is less than or equal to (i.e. the book was not returned within 15 days), then the condition is false, and the defaulted property is set to true.
     },
     damaged: {

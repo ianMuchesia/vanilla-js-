@@ -27,7 +27,9 @@ const postReturn = async (req, res) => {
   }
 
   
-    const returnBorrowed = await Borrow.findOne({'student':returnStudent._id, 'book':returnBook._id ,'returned':false})
+    const returnBorrowed = await Borrow.findOne({'student':returnStudent._id,
+     'book':returnBook._id ,
+     'returned':false})
     /* .where("student._id")
     .equals((returnStudent._id).toString())
     .where("book._id")

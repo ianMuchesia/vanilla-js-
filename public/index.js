@@ -15,17 +15,7 @@ const BorrowedSection = document.querySelector('.Borrowed')
 const DamagedSection = document.querySelector('.Damaged')
 const DefaultSection = document.querySelector('.Default')
 
-const Loader = ` <div class="loader">
-<div class="square" id="sq1"></div>
-<div class="square" id="sq2"></div>
-<div class="square" id="sq3"></div>
-<div class="square" id="sq4"></div>
-<div class="square" id="sq5"></div>
-<div class="square" id="sq6"></div>
-<div class="square" id="sq7"></div>
-<div class="square" id="sq8"></div>
-<div class="square" id="sq9"></div>
-</div>`
+
 //functions 
 
 const localStorage_user = JSON.parse(localStorage.getItem('token'))
@@ -193,8 +183,7 @@ showAllBooks()
 
 const showAllBorrowed=async()=>{
   try {
-    studentCard.innerHTML = Loader
-    borrowedContainer.innerHTML = Loader
+   
     const data = await fetchAllBorrowedBooks()
    
     const allBorowedBooks = data.map(item=>{
@@ -310,6 +299,8 @@ borrowForm.addEventListener('submit', async(e)=>{
           categorySelect.value = "";
           bookName.value = "";
           boookId.value= "";
+          showAllBorrowed()
+          showAllBooks()
       }else{
           alert(msg)
       } 
@@ -381,6 +372,13 @@ const comment = document.querySelector('#comment')
       console.log(data)
       if(response.ok){
         alert(data.msg)
+        StudentAdmNoInputReturn.value = "";
+        bookIDReturnForm.value="";
+        bookNameReturnForm.value="";
+        comment.value="";
+        showAllBorrowed()
+        showAllBooks()
+        showDamagedBooks()
       }else{
         alert(data.msg)
       }
@@ -400,7 +398,7 @@ const showDamagedBooks = async()=>{
 
 
   try {
-    damagedContainer.innerHTML = Loader
+   
     const response = await fetch('http://localhost:3000/api/v1/damaged', fetchSettings)
     const data = await response.json()
     
@@ -418,6 +416,7 @@ const showDamagedBooks = async()=>{
       </div>
 
       <div class="damaged-student reason-container">
+      <span>Damaged Reason: <br/></span>
         <h5 class="damaged-reason">${damagedReason}</h5>
         <span>Remove</span>
         <a href="delete.html?id=${_id}"> <i class="bi bi-trash3 delete-damaged-button" data-id=${_id}></i></a>
@@ -450,12 +449,13 @@ const showDefaultedBooks = async()=>{
 
 
   try {
-    defaultedContainer.innerHTML = Loader
+    
     const response = await fetch('http://localhost:3000/api/v1/defaulted', fetchSettings)
     const data = await response.json()
-    
+    console.log(data)
     const allDefaultedBooks = data.map(item=>{
-      const {book , student} = item
+      const {book , student,_id, returnDate} = item
+      const overdueDays = Math.floor((new Date() - new Date(returnDate)) / (1000 * 60 * 60 * 24));
       return `
       <div class="defaulted-card">
       <div class="student">
@@ -463,13 +463,13 @@ const showDefaultedBooks = async()=>{
         <h5 class="admNo"><span>Reg No: <br/></span>${student.admissionNumber}</h5>
       </div>
       <div class="program">
-        <h5 class="course"><span>Course: <br/></span>${student.course}</h5>
+        <h5 class="course"><span>Overdue days: <br/></span>${overdueDays} days</h5>
       </div>
 
       <div class="book">
         <h5 class="book"><span>Book Name: <br/></span>${book.title}</h5>
         <h5 class="book"><span>Book Id: <br/></span>${book.bookID}</h5>
-        <h5 class="remove"><span>Remove<br/></span><i class="bi bi-trash3" data_id=${_id}></i></h5>
+        <h5 class="remove"><span>Remove<br/></span><a href="delete.html?id=${_id}"> <i class="bi bi-trash3 delete-damaged-button" data-id=${_id}></i></a>
       </div>
     </div>
       `
